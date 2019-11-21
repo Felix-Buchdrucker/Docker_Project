@@ -1,0 +1,12 @@
+def myName
+myName = "Felix"
+
+node(){
+    stage("Hello stage"){
+        sh "echo ${myName}"
+    }
+    stage("Stage 2"){
+        sh "touch test.txt"
+        sh "ls -l" 
+    }
+}

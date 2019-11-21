@@ -1,0 +1,30 @@
+redis: 
+        image: redis
+
+
+db:
+        image: postgres:9.4
+
+
+vote:
+        image: vote-app-new
+        ports: 
+                - 5020:8080
+        links:  
+                - redis
+
+
+worker:
+        image: worker-app
+        links:
+                - db
+                - redis
+
+
+
+result:
+        image: result-app
+        ports:
+                - 5022:8080
+        links: 
+                - db
